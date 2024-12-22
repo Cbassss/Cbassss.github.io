@@ -1,0 +1,269 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and basic layout */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2a3c6f;
+    padding: 10px 20px;
+    color: #ffffff;
+}
+
+.header lg {
+    color: #e1e2ef;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.header .nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.header .nav ul li {
+    margin-left: 20px;
+}
+
+.header .nav ul li a {
+    color: #e1e2ef;
+    text-decoration: none;
+}
+.logo {
+    color: #ff6347; /* Set the color to Tomato Red (you can change this to your preferred color) */
+    font-size: 24px; /* Adjust the font size */
+    font-weight: bold; /* Optional: Make the text bold */
+}
+
+/* Page Backgrounds (Custom background for each page) */
+body.page-one {
+    background-color: #f4f4f4; /* For the first page */
+}
+
+body.page-two {
+    background-color: #c4c6ef; /* For the second page */
+}
+
+/* Hero Section (only for the second page) */
+.hero {
+    background: url('your-image.jpg') no-repeat center center/cover;
+    color: #05204A;
+    text-align: center;
+    padding: 150px 20px;
+}
+
+.hero .hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero .hero-content p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* Container for general page content */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Title Styles */
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Project Section (Shared style for both pages) */
+.project {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-info {
+    text-align: center;
+    max-width: 600px;
+}
+
+.project-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.project-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Image Carousel (Shared between both pages) */
+.image-carousel {
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.image-carousel img {
+    width: 100%;
+    height: auto;
+    display: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.image-carousel img.active {
+    display: block;
+}
+
+/* Smaller size for vertical images */
+.image-carousel img.vertical {
+    width: 60%; /* Smaller width for vertical images */
+    margin: 0 auto; /* Center the vertical image */
+    transform: scale(0.8); /* Reduce the scale for vertical images */
+}
+
+/* Arrow Buttons for Image Carousel */
+.container {
+    position: relative;
+    /* Any other styles for your container */
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: #fff;
+    background: linear-gradient(145deg, #ff000000, #ff000000); /* Gradient background */
+    border: 2px solid #ff000000; /* Border to make the arrow stand out */
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 30%; /* Rounded arrow button */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    z-index: 10;
+
+    /* Initially hide the arrows */
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Show arrows when hovering over the image */
+.container:hover .arrow,
+.container img:hover + .arrow,
+.container img:hover ~ .arrow {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Left arrow */
+.arrow-left {
+    left: 20px; /* Position on the left */
+}
+
+/* Right arrow */
+.arrow-right {
+    right: 20px; /* Position on the right */
+}
+
+/* Hover effect for arrows */
+.arrow:hover {
+    background:  #2a3c6f; /* Reverse gradient on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+    transform: translateY(-50%) scale(1.1); /* Slight zoom effect on hover */
+}
+
+.arrow:focus {
+    outline: none; /* Remove default outline on focus */
+}
+
+.Arduino.code {
+    color: #000000; /* Initial color (Arduino green) */
+    cursor: pointer; /* Pointer cursor to indicate it's clickable */
+    font-weight: bold; /* Make the text bold */
+}
+
+
+
+
+/* Footer */
+.footer {
+    background-color: #2a3c6f;
+    color: #e1e2ef;
+    text-align: center;
+    padding: 5px;
+}
+
+.footer .social-media a {
+    color: #e1e2ef;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer .social-media a:hover {
+    text-decoration: underline;
+}
+
+/* Section Styles (For both pages) */
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Services List (only for the second page) */
+.services-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.service-item {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.service-item h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.service-item p {
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .services-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}

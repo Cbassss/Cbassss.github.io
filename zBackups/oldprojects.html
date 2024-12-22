@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <lg> Sebastian Duker</lg> 
+    
+        <nav class="nav">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>My Projects</h1>
+
+        <!-- Project 1 -->
+        <div class="project">
+            <div class="image-carousel" id="carousel1">
+                <img src="photo/sword1.jpg" alt="Project 1 Image 1"class="active">
+                <img src="photo/sword3.jpg" alt="Project 1 Image 2">
+                <img src="photo/sword2.jpg" alt="Project 1 Image 3">
+                
+
+                <button class="arrow arrow-left" onclick="changeImage('carousel1', -1)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage('carousel1', 1)">&#10095;</button>
+            </div>
+            <div class="project-info">
+                <h2 class="project-title">Arduino sword</h2>
+                <p class="project-description">Inspired by a book called H.I.V.E. I read about a person that had this sword that pulsed this deep purple and I knew I had to make it. I used my CAD skills to create the frame that encases the arduino. I spent many iterations making it fit snugly in the container but still look good. I used my programming knowledge to program the arduino to pulse the RGB LED and turn off when I click a button on the top of the box. </p>
+                <p><span class="Arduino code" onclick="window.location.href='arduinocode.html';">Click to view code</span></p>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project">
+            <div class="image-carousel" id="carousel2">
+                <img src="photo/drone1.jpg" alt="Project 2 Image 1" class="active">
+                <img src="photo/drone2.jpg" alt="Project 2 Image 2">
+                <img src="photo/drone3.jpg" alt="Project 2 Image 3">
+                <button class="arrow arrow-left" onclick="changeImage('carousel2', -1)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage('carousel2', 1)">&#10095;</button>
+            </div>
+            <div class="project-info">
+                <h2 class="project-title">FPV drone</h2>
+                <p class="project-description">I have always been interested in birds and their ability to fly. Once I saw a video of someone flying a cool shot I thought it was interesting, but once I saw that they were seeing it with VR-like goggles, I knew I had to get one. I used my research skills to find out what components are the best and lightest(to not break any FAA rules). I used my CAD skills to create the frame and optimize it so that it was strong and light. A frame that i s 3D printed is way less stable than the standard 3” carbon fiber frames so I had to iterate and go through many failures to find something that worked. I have had many problems, Some causing me to lose or break my drone, but I am still iterating and trying to make the drone fly stable while still being 3D printed.</p>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project">
+            <div class="image-carousel" id="carousel3">
+                <img src="photo/bowl1.jpg" alt="Picture of sword 1" class="active">
+                <img src="photo/bowl2.jpg" alt="Project 3 Image 2">
+                <button class="arrow arrow-left" onclick="changeImage('carousel3', -1)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage('carousel3', 1)">&#10095;</button>
+            </div>
+            <div class="project-info">
+                <h2 class="project-title">Bowl Clips</h2>
+                <p class="project-description">My parents wanted something to make sure their counter wouldn’t get scratched. They asked me to design something. After thinking for some time, I thought it would be fun to make little people hold it up, all with different faces or poses. I took measurements, then designed them in CAD and printed them. They turned out well and are being used.</p>
+            </div>
+        </div>
+
+        <!-- More projects can be added here using the same structure -->
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Sebastian Duker. All rights reserved.</p>
+            <div class="social-media">
+                <a href="mailto:sebastianduker@gmail.com">Gmail</a> | 
+                <a href="https://github.com/Cbassss">Github</a> 
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript function to change images in carousel
+        function changeImage(carouselId, direction) {
+            var carousel = document.getElementById(carouselId);
+            var images = carousel.getElementsByTagName('img');
+            var activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+
+            // Remove the "active" class from the current image
+            images[activeIndex].classList.remove('active');
+
+            // Calculate the new index
+            var newIndex = (activeIndex + direction + images.length) % images.length;
+
+            // Add the "active" class to the new image
+            images[newIndex].classList.add('active');
+        }
+    </script>
+</body>
+</html>
