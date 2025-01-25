@@ -105,11 +105,13 @@
     <!-- Header with navigation -->
     <header class="header">
         <div class="header-content">
-            <h1>SEBASTIAN DUKER</h1>
+            <h1 style="font-size: 32px; font-weight: 600; list-style-type: none;">
+                <a href="../index.html" style="text-decoration: none; color: black;">SEBASTIAN DUKER</a>
+            </h1>
             <nav class="nav">
                 <ul>
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="#"style = "text-decoration: underline;">Projects</a></li>
+                    <li><a href=""style = "text-decoration: underline;">Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -158,6 +160,41 @@
         </div>
 
         <!-- Project 3 -->
+        
+        <!-- Project 4 -->
+        <div class="project">
+            <div class="image-carousel" id="carousel4">
+                <img src="photo/Ticktack1.jpeg" alt="ticktack Image 1" class="active">
+                <img src="photo/TickTack2.jpeg" alt="ticktack Image 2">
+                <img src="photo/TickTack3.jpeg" alt="ticktack Image 3">
+                <img src="photo/TickTack4.png" alt="ticktack Image 4">
+                <img src="photo/TickTack5.png" alt="ticktack Image 5">
+                <button class="arrow arrow-left" onclick="changeImage('carousel4', -1)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage('carousel4', 1)">&#10095;</button>
+            </div>
+            <div class="project-info">
+                <h2 class="project-title">Tic Tac Watch</h2>
+                <div class="text-box">
+                    <p class="project-description">I love eating Tic Tacs. I would always have a pack in my soccer bag. I designed this so I will always have Tic Tacs on me when I get hungry. It uses a spring I found to act as an archimedes screw and push a platform to push into the Tic Tacs so they wouldn't shake around and make sound. I also made the watch 2 parts so you can replenish the Tic Tacs easier.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Project 5 -->
+        <div class="project">
+            <div class="image-carousel" id="carousel5">
+                <img src="photo/Umbrella1.JPG" alt="Umbrella Image 1" class="active">
+                <img src="photo/Umbrella2.png" alt="Umbrella Image 2">
+                <img src="photo/Umbrella3.JPG" alt="Umbrella Image 3">
+                <button class="arrow arrow-left" onclick="changeImage('carousel5', -1)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage('carousel5', 1)">&#10095;</button>
+            </div>
+            <div class="project-info">
+                <h2 class="project-title">Umbrella Hook</h2>
+                <div class="text-box">
+                    <p class="project-description">My family wanted to add some color to our closet, I had the idea of painting an umbrella, and having the hook of it be an actual hook you can put hats on. After some modeling, and some redesigning, I printed the final version out. It hasn’t broken yet so I think it's a success.</p>
+                </div>
+            </div>
+        </div>
         <div class="project">
             <div class="image-carousel" id="carousel3">
                 <img src="photo/bowl1.jpg" alt="Bowl Image 1" class="active">
@@ -173,7 +210,6 @@
                 </div>
             </div>
         </div>
-
         <!-- More projects can be added here using the same structure -->
 
     </div>

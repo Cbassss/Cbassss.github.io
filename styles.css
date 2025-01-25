@@ -1,410 +1,373 @@
 /* General resets */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
- }
- 
- 
- body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    line-height: 1.6;
-    overflow-x: hidden;
- }
- 
- 
- /* Header */
- header {
-    background-color: #fff;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 10;
- }
- 
- 
- .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
- }
- 
- 
- header h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #333;
-    letter-spacing: 1px;
- }
- 
- 
- .nav ul {
-    display: flex;
-    list-style: none;
- }
- 
- 
- .nav ul li {
-    margin: 0 20px;
- }
- 
- 
- .nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
- }
- 
- 
- .nav ul li a:hover {
-    color: #007bff;
- }
- 
- 
- /* Hero Section */
- .hero {
-    background: linear-gradient(135deg, #67b26f, #4ca2cd);
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    padding: 0 20px;
- }
- 
- 
- .hero-content {
-    position: relative;
-    z-index: 1; /* Ensure it stays above other elements */
- }
- 
- 
- .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    transition: opacity 0.3s ease; /* For fade effect */
- }
- 
- 
- .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    font-weight: 300;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
- }
- 
- 
- .cta-btn {
-    background-color: #fff;
-    color: #333;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-size: 1.2rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: transform 0.3s ease, background-color 0.3s ease;
- }
- 
- 
- .cta-btn:hover {
-    background-color: #007bff;
-    color: white;
-    transform: translateY(-5px);
- }
- 
- 
- /* About Section */
- .section {
-    padding: 80px 20px;
-    text-align: center;
- }
- 
- 
- .about {
-    background-color: #fff;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
- }
- 
- 
- .about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    font-weight: 600;
- }
- 
- 
- .about-content p {
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin: 0 auto;
-    font-weight: 300;
-    line-height: 1.8;
- }
- 
- 
- /* Projects Section */
- .projects {
-    background-color: #f9f9f9;
- }
- 
- 
- .projects h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    font-weight: 600;
-    text-align: center;
- }
- 
- 
- .project-grid {
-    display: flex;
-    justify-content: space-around;
-    gap: 30px;
-    flex-wrap: wrap;
- }
- 
- 
- .project-card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-    margin-bottom: 30px;
- }
- 
- 
- .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
- }
- 
- 
- .project-card h3 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    font-weight: 600;
- }
- 
- 
- .project-card p {
-    font-size: 1rem;
-    color: #666;
-    font-weight: 300;
- }
- 
- 
- /* Contact Section */
- .contact {
-    background-color: #fff;
-    padding: 80px 20px;
-    text-align: center;
- }
- 
- 
- .contact p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #555;
-    font-weight: 300;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
- }
- 
- 
- .contact .cta-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: transform 0.3s ease, background-color 0.3s ease;
- }
- 
- 
- .contact .cta-btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-5px);
- }
- 
- 
- /* Footer */
- footer {
-    background-color: #222;
-    color: white;
-    padding: 10px 10px;
-    text-align: center;
- }
- 
- 
- .social-links {
-    margin-top: 10px;
- }
- 
- 
- .social-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
- }
- 
- 
- .social-links a:hover {
-    color: #007bff;
- }
- 
- 
- /* Responsive Design */
- @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 3rem;
-    }
- 
- 
-    .cta-btn {
-        font-size: 1.1rem;
-        padding: 10px 25px;
-    }
- 
- 
-    .about h2 {
-        font-size: 2rem;
-    }
- 
- 
-    .about-content p {
-        font-size: 1rem;
-    }
- 
- 
-    .project-grid {
-        flex-direction: column;
-        align-items: center;
-    }
- 
- 
-    .project-card {
-        width: 90%;
-        margin-bottom: 20px;
-    }
-    .project {
-        background-color: #fff;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        padding: 24px;
-        border-radius: 24px;
-        margin-bottom: 32px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
- 
- 
-    .project h2 {
-        font-size: 32px;
-        margin-bottom: 16px;
-        font-weight: 600;
-    }
- 
- 
-    .project p {
-        font-size: 20px;
-        font-weight: 300;
-        line-height: 1.8;
-        color: #666;
-    }
- 
- 
-    .image-carousel img {
-        max-width: 100%;
-        border-radius: 16px;
-    }
- 
- 
-    .arrow {
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        padding: 8px;
-        cursor: pointer;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: background-color 0.3s ease;
-    }
- 
- 
-    .arrow-left {
-        left: 16px;
-    }
- 
- 
-    .arrow-right {
-        right: 16px;
-    }
- 
- 
-    .arrow:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-    }
- 
- 
-    .project-info {
-        text-align: center;
-    }
- 
- 
-    .arduino-code {
-        color: #007bff;
-        cursor: pointer;
-        text-decoration: underline;
-    }
- 
- 
-    .arduino-code:hover {
-        color: #0056b3;
-    }
- 
- 
-    .social-media a {
-        color: white;
-        text-decoration: none;
-        margin: 0 16px;
-        font-size: 20px;
-        font-weight: 500;
-        transition: color 0.3s ease;
-    }
- 
- 
-    .social-media a:hover {
-        color: #007bff;
-    }
-    body {
-        padding-top: 80px; /* Adjust this value as needed */
-    }
-    
-   
-   
- }
- 
- 
- 
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'Poppins', sans-serif;
+   background-color: #f5f5f5;
+   color: #333;
+   line-height: 1.6;
+   overflow-x: hidden;
+}
+
+/* Header */
+header {
+   background-color: #fff;
+   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+   padding: 20px 0;
+   position: fixed;
+   width: 100%;
+   top: 0;
+   z-index: 10;
+}
+
+.header-content {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 30px;
+}
+
+header h1 {
+   font-size: 2rem;
+   font-weight: 600;
+   color: #333;
+   letter-spacing: 1px;
+}
+
+.nav ul {
+   display: flex;
+   list-style: none;
+}
+nav ul li {
+   list-style-type: none; /* Remove bullet point */
+}
+
+.nav ul li {
+   margin: 0 20px;
+}
+
+.nav ul li a {
+   text-decoration: none;
+   color: #333;
+   font-size: 1.1rem;
+   font-weight: 500;
+   transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+   color: #007bff;
+}
+
+/* Hero Section */
+.hero {
+   background: linear-gradient(135deg, #67b26f, #4ca2cd);
+   color: white;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   position: relative;
+   padding: 0 20px;
+}
+
+.hero-content {
+   position: relative;
+   z-index: 1; /* Ensure it stays above other elements */
+}
+
+.hero-content h1 {
+   font-size: 4rem;
+   margin-bottom: 20px;
+   letter-spacing: 1.5px;
+   font-weight: 700;
+   transition: opacity 0.3s ease; /* For fade effect */
+}
+
+.hero-content p {
+   font-size: 1.2rem;
+   margin-bottom: 30px;
+   font-weight: 300;
+   max-width: 700px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.cta-btn {
+   background-color: #fff;
+   color: #333;
+   padding: 12px 30px;
+   border-radius: 25px;
+   font-size: 1.2rem;
+   text-decoration: none;
+   font-weight: 500;
+   transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+   background-color: #007bff;
+   color: white;
+   transform: translateY(-5px);
+}
+
+/* About Section */
+.section {
+   padding: 80px 20px;
+   text-align: center;
+}
+
+.about {
+   background-color: #fff;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about h2 {
+   font-size: 2.5rem;
+   margin-bottom: 30px;
+   font-weight: 600;
+}
+
+.about-content p {
+   font-size: 1.1rem;
+   max-width: 800px;
+   margin: 0 auto;
+   font-weight: 300;
+   line-height: 1.8;
+}
+
+/* Projects Section */
+.projects {
+   background-color: #f9f9f9;
+}
+
+.projects h2 {
+   font-size: 2.5rem;
+   margin-bottom: 30px;
+   font-weight: 600;
+   text-align: center;
+}
+
+.project-grid {
+   display: flex;
+   justify-content: space-around;
+   gap: 30px;
+   flex-wrap: wrap;
+}
+
+.project-card {
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 15px;
+   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+   width: 300px;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+   text-align: center;
+   margin-bottom: 30px;
+}
+
+.project-card:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h3 {
+   font-size: 1.6rem;
+   margin-bottom: 15px;
+   font-weight: 600;
+}
+
+.project-card p {
+   font-size: 1rem;
+   color: #666;
+   font-weight: 300;
+}
+
+/* Contact Section */
+.contact {
+   background-color: #fff;
+   padding: 80px 20px;
+   text-align: center;
+}
+
+.contact p {
+   font-size: 1.2rem;
+   margin-bottom: 30px;
+   color: #555;
+   font-weight: 300;
+   max-width: 700px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.contact .cta-btn {
+   background-color: #007bff;
+   color: white;
+   padding: 12px 30px;
+   border-radius: 25px;
+   font-size: 1.2rem;
+   font-weight: 500;
+   text-decoration: none;
+   transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact .cta-btn:hover {
+   background-color: #0056b3;
+   transform: translateY(-5px);
+}
+
+/* Special css code */
+.outer-container {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   padding: 80px 20px;
+   height: 100vh; /* Make the container very tall */
+}
+
+.inner-container {
+   display: flex;
+   flex-direction: column; /* Stack items vertically on smaller screens */
+   align-items: center; /* Center-align items on smaller screens */
+   width: 50%;
+   max-width: 800px; /* Limit the width on larger screens */
+   background-color: #f8f9fa;
+   padding: 40px;
+   border-radius: 24px;
+   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-info {
+   width: 100%; /* Take up full width on smaller screens */
+   text-align: center; /* Center-align text on smaller screens */
+   margin-bottom: 20px; /* Add some spacing below the text */
+}
+
+.portfolio-info h2 {
+   font-size: 32px;
+   margin-bottom: 16px;
+   font-weight: 600;
+}
+
+.portfolio-info p {
+   font-size: 20px;
+   margin-bottom: 24px;
+   font-weight: 300;
+   line-height: 1.6;
+}
+
+.download-btn {
+   width: 100%; /* Take up full width on smaller screens */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.download-btn a {
+   display: inline-block;
+   background-color: #007bff;
+   color: white;
+   padding: 16px 32px;
+   border-radius: 24px;
+   font-size: 20px;
+   font-weight: 500;
+   text-decoration: none;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+   margin-bottom: 16px;
+}
+
+.download-btn a:hover {
+   background-color: #0056b3;
+   transform: translateY(-5px);
+}
+
+@media (min-width: 600px) {
+   .inner-container {
+       flex-direction: row; /* Align items horizontally on larger screens */
+       align-items: flex-start; /* Align items to the start again */
+   }
+
+   .portfolio-info {
+       width: 50%;
+       text-align: left; /* Revert to left-align text on larger screens */
+       margin-bottom: 0; /* Remove extra spacing on larger screens */
+   }
+
+   .download-btn {
+       width: 30%; /* Revert to smaller width on larger screens */
+   }
+}
+
+/* Footer */
+footer {
+   background-color: #222;
+   color: white;
+   padding: 10px 10px;
+   text-align: center;
+}
+
+.social-links {
+   margin-top: 10px;
+}
+
+.social-links a {
+   color: white;
+   text-decoration: none;
+   margin: 0 15px;
+   font-size: 1.1rem;
+   font-weight: 500;
+   transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+   color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 930px) {
+   .inner-container {
+       flex-direction: column; /* Stack items vertically */
+       align-items: center; /* Center-align items */
+   }
+
+   .portfolio-info {
+       width: 100%; /* Take up full width */
+       text-align: center; /* Center-align text */
+       margin-bottom: 20px; /* Add some spacing below the text */
+   }
+
+   .download-btn {
+       width: 100%; /* Take up full width */
+   }
+
+   .download-btn a {
+       padding: 14px 28px; /* Adjust padding for smaller screens */
+       font-size: 18px; /* Adjust font size for smaller screens */
+   }
+
+   .portfolio-info h2 {
+       font-size: 48px; /* Adjust heading size */
+   }
+
+   .portfolio-info p {
+       font-size: 18px; /* Adjust paragraph size */
+   }
+}
+
+
+@media (max-width: 930px) {
+   .inner-container {
+       flex-direction: column; 
+   }
+
+   .portfolio-info, .download-btn {
+       width: 100%;
+       text-align: center;
+   }
+}
+
+
+  
