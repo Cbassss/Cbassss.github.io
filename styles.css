@@ -1,0 +1,488 @@
+/* ==========================================================================
+   01. GLOBAL VARIABLES & DESIGN TOKENS
+   ========================================================================== */
+:root {
+    /* Color Palette */
+    --bg-black: #000000;
+    --card-bg: #111111;
+    --text-main: #e0e0e0;
+    --teal-glow: #00d2be;       /* Light bluish-green for hover effects/shadows */
+    --teal-dark: #007a6e;       /* Darker bluish-green for header, lines, & borders */
+    
+    /* Layout Settings */
+    --header-height: 52px;      /* Reference for layout spacing */
+}
+
+/* ==========================================================================
+   02. GENERAL RESETS & BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-black);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   03. HEADER & NAVIGATION (SLIM LAYOUT)
+   ========================================================================== */
+/* Header Base Styling - Made Slimmer */
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--teal-dark);
+    box-shadow: none;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1010;
+    isolation: isolate;
+}
+
+/* Subtle teal overlay that fades in when hovering over the header */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--teal-dark);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+/* Only a small amount of teal appears */
+header:hover::before {
+    opacity: 0.50;
+}
+
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    position: relative;
+}
+
+header h1 a {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    list-style-type: none;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+/* Current page stays teal even when the header is hovered */
+.nav ul li a.active {
+    color: var(--teal-glow) !important;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 0 0 8px rgba(0, 210, 190, 0.5);
+}
+
+/* Individual header items grow when hovered */
+header h1 a:hover,
+.nav ul li a:hover {
+    transform: scale(1.10);
+    color: var(--teal-glow);
+}
+
+/* Hide Dropdown Form Controls on Desktop viewports */
+.menu-toggle-checkbox,
+.menu-toggle-label {
+    display: none;
+}
+/* ==========================================================================
+   04. HERO SECTION (WELCOME ACCENT)
+   ========================================================================== */
+.hero {
+    background: var(--bg-black);
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    padding: 0 10%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+}
+
+.hero-content h1 {
+    font-size: 5.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: var(--teal-glow);
+    line-height: 1.1;
+    transition: opacity 0.3s ease;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: #aaaaaa;
+    max-width: 700px;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.cta-btn {
+    background-color: transparent;
+    color: var(--teal-glow);
+    border: 2px solid var(--teal-glow);
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: var(--teal-glow);
+    color: #000000;
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 210, 190, 0.4);
+}
+
+/* ==========================================================================
+   05. MAIN LAYOUT: VERTICAL CONTENT STACK (CLICKABLE SECTIONS)
+   ========================================================================== */
+.content-stack {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 20px 6rem 20px; /* Synchronized margins align cleanly with header left-bounds */
+    display: flex;
+    flex-direction: column;
+}
+
+.content-section-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+}
+
+.content-section {
+    background-color: var(--card-bg);
+    border-left: 4px solid var(--teal-glow);
+    padding: 2.5rem;
+    border-radius: 0 8px 8px 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 15px rgba(0, 210, 190, 0.05);
+    width: 100%;
+}
+
+/* Content Interactions */
+.content-section-link:hover .content-section {
+    transform: translateX(8px);
+    box-shadow: 0 12px 25px rgba(0, 210, 190, 0.2);
+}
+
+.content-section-link:hover .content-section h2 {
+    color: var(--teal-glow);
+}
+
+.content-section h2 {
+    color: var(--teal-dark);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    transition: color 0.2s ease;
+}
+
+.content-section p {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    max-width: 100%;
+}
+
+/* Section Dividers - Run sequentially starting from bottom of first card block */
+.content-section-link:not(:last-child) {
+    border-bottom: 2px solid var(--teal-dark);
+    padding-bottom: 4rem;
+    margin-bottom: 4rem;
+}
+
+/* ==========================================================================
+   06. MISCELLANEOUS CUSTOM CONTAINERS (ABOUT / DOWNLOAD COMPONENT PIECES)
+   ========================================================================== */
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 20px;
+    height: 100vh;
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    max-width: 800px;
+    background-color: var(--card-bg);
+    border: 1px solid #222222;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 210, 190, 0.25);
+}
+
+.portfolio-info {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.portfolio-info h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: var(--teal-dark);
+}
+
+.portfolio-info p {
+    font-size: 20px;
+    margin-bottom: 24px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+.download-btn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.download-btn a {
+    display: inline-block;
+    background-color: var(--teal-glow);
+    color: #000000;
+    padding: 16px 32px;
+    border-radius: 24px;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    margin-bottom: 16px;
+}
+
+.download-btn a:hover {
+    background-color: #00a896;
+    color: #ffffff;
+    transform: translateY(-5px);
+}
+
+/* ==========================================================================
+   07. FOOTER STYLING (SLIM 2-LINE CONFIGURATION)
+   ========================================================================== */
+footer {
+    background-color: #050505;
+    border-top: 1px solid #1a1a1a;
+    padding: 20px 20px; /* Reduced vertical footprint */
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; /* Compact layout spacing between lines */
+    align-items: center;
+}
+
+.footer-nav-links, 
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 24px;
+}
+
+.footer-nav-links a, 
+.social-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.95rem; /* Standard formatting applied uniformly */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-nav-links a:hover, 
+.social-links a:hover {
+    color: var(--teal-glow);
+}
+
+.copyright {
+    color: #444444;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   08. RESPONSIVE DESIGN ENGINE & MEDIA QUERIES
+   ========================================================================== */
+
+/* --- Mobile Navigation Dropdown Transformation (< 840px) --- */
+@media (max-width: 840px) {
+    .menu-toggle-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1020;
+    }
+
+    .menu-toggle-label span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    .nav {
+        position: absolute;
+        top: calc(100% + 10px); /* Seamlessly matches layout adjustments */
+        left: 0;
+        width: 100%;
+        background-color: rgba(5, 5, 5, 0.98); 
+        border-bottom: 2px solid var(--teal-dark);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    nav ul li {
+        margin: 15px 30px;
+    }
+
+    /* Mobile Text Legibility Fixes (Overrides Desktop Dark-to-Light Shifts) */
+    header:hover .nav ul li a.active {
+        color: var(--teal-glow) !important; 
+    }
+
+    header:hover .nav ul li a {
+        color: #ffffff !important; 
+    }
+
+    nav ul li a:hover {
+        color: var(--teal-glow) !important;
+    }
+
+    /* Toggle visibility conditions */
+    .menu-toggle-checkbox:checked ~ .nav {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Toggle Switch Hamburger Animation */
+    .menu-toggle-checkbox:checked ~ .menu-toggle-label span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle-checkbox:checked ~ .menu-toggle-label span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle-checkbox:checked ~ .menu-toggle-label span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+/* --- Layout Responsiveness (Grid Conversions) --- */
+@media (min-width: 600px) {
+    .inner-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .portfolio-info {
+        width: 50%;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    .download-btn {
+        width: 30%;
+    }
+}
+
+@media (max-width: 930px) {
+    .inner-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .portfolio-info, .download-btn {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .download-btn a {
+        padding: 14px 28px;
+        font-size: 18px;
+    }
+
+    .portfolio-info h2 {
+        font-size: 48px;
+    }
+
+    .portfolio-info p {
+        font-size: 18px;
+    }
+    
+    .hero-content h1 {
+        font-size: 3.8rem;
+    }
+}
