@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics | Sebastian Duker</title>
+    <link rel="stylesheet" href="../styles.css">
+
+    <style>
+        /* =========================================
+           PAGE INTRO
+        ========================================= */
+
+        .page-intro {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 20px 2rem 20px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            gap: 15px;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--teal-glow);
+            line-height: 1;
+            margin: 0;
+
+        }
+
+        .page-description {
+            max-width: 1100px;
+            font-size: 1.25rem;
+            color: #cccccc;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           DIVIDER
+        ========================================= */
+
+        .intro-divider {
+            max-width: 1100px;
+            margin: 0 auto 5rem auto;
+            padding: 0 20px;
+        }
+
+        .intro-divider-line {
+            border-bottom: 2px solid var(--teal-dark);
+            width: 100%;
+        }
+
+        /* =========================================
+           TIMELINE
+        ========================================= */
+
+        .timeline-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 8rem 20px;
+            position: relative;
+        }
+
+        /*
+         * The main vertical line
+         */
+        .timeline {
+            position: relative;
+            padding: 20px 0 100px 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--teal-dark);
+            transform: translateX(-50%);
+        }
+
+        /* =========================================
+           TIMELINE ITEMS
+        ========================================= */
+
+        .timeline-item {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+
+            display: flex;
+            align-items: center;
+
+            margin-bottom: 100px;
+        }
+
+        /*
+         * Cards
+         */
+        .timeline-card {
+            width: calc(50% - 70px);
+
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid var(--teal-dark);
+            border-radius: 10px;
+
+            padding: 30px;
+
+            box-shadow: 0 0 0 rgba(0, 210, 190, 0);
+
+            opacity: 0;
+            transform: translateY(50px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+        }
+
+        /*
+         * When the card enters the screen
+         */
+        .timeline-item.visible .timeline-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-card:hover {
+            border-color: var(--teal-glow);
+
+            box-shadow:
+                0 0 25px rgba(0, 210, 190, 0.10);
+        }
+
+        /*
+         * Alternate sides
+         */
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        /* =========================================
+           CENTER DOT
+        ========================================= */
+
+        .timeline-dot {
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            width: 18px;
+            height: 18px;
+
+            transform: translate(-50%, -50%);
+
+            background: #000;
+            border: 3px solid var(--teal-glow);
+
+            border-radius: 50%;
+
+            z-index: 3;
+
+            transition:
+                background-color 0.5s ease,
+                box-shadow 0.5s ease,
+                transform 0.5s ease;
+        }
+
+        .timeline-item.visible .timeline-dot {
+            background: var(--teal-dark);
+
+            box-shadow:
+                0 0 0 6px rgba(0, 210, 190, 0.08),
+                0 0 20px rgba(0, 210, 190, 0.25);
+
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+
+        /* =========================================
+           CONNECTING ARM
+        ========================================= */
+
+        .timeline-arm {
+            position: absolute;
+
+            top: 50%;
+
+            height: 2px;
+            width: 70px;
+
+            background: var(--teal-dark);
+
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-arm {
+            left: calc(50% - 70px);
+        }
+
+        .timeline-item:nth-child(even) .timeline-arm {
+            right: calc(50% - 70px);
+        }
+
+        /* =========================================
+           CARD CONTENT
+        ========================================= */
+
+        .timeline-year {
+            color: var(--teal-glow);
+            font-size: 0.95rem;
+            font-weight: 600;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            color: var(--text-main);
+            font-size: 2rem;
+            font-weight: 700;
+
+            margin: 0 0 15px 0;
+        }
+
+        .timeline-description {
+            color: #cccccc;
+
+            font-size: 1.05rem;
+            line-height: 1.7;
+
+            margin: 0 0 22px 0;
+        }
+
+        /* =========================================
+           CLASS / ACHIEVEMENT TAGS
+        ========================================= */
+
+        .academic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .academic-tag {
+            padding: 6px 13px;
+
+            border-radius: 20px;
+
+            background-color: rgba(0, 210, 190, 0.08);
+
+            border: 1px solid var(--teal-dark);
+
+            color: var(--teal-glow);
+
+            font-size: 0.85rem;
+            font-weight: 500;
+
+            letter-spacing: 0.3px;
+        }
+
+        /* =========================================
+           FUTURE ENDEAVORS
+        ========================================= */
+
+        .future-item {
+            min-height: 350px;
+            margin-top: 50px;
+            margin-bottom: 0;
+        }
+
+        .future-card {
+            border-color: var(--teal-glow);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0, 210, 190, 0.08),
+                    rgba(0, 0, 0, 0.7)
+                );
+        }
+
+        .future-card .timeline-title {
+            color: var(--teal-glow);
+        }
+
+        /* =========================================
+           ARROW AT END OF TIMELINE
+        ========================================= */
+
+        .timeline-end-arrow {
+            position: absolute;
+
+            left: 50%;
+            bottom: 0;
+
+            width: 22px;
+            height: 22px;
+
+            border-right: 3px solid var(--teal-glow);
+            border-bottom: 3px solid var(--teal-glow);
+
+            transform:
+                translateX(-50%)
+                rotate(45deg);
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 840px) {
+
+            .page-intro {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 6rem;
+                gap: 15px;
+            }
+
+            .page-title {
+                font-size: 3.5rem;
+            }
+
+            .page-description {
+                font-size: 1.1rem;
+            }
+
+            /*
+             * Move timeline to the left on mobile
+             */
+            .timeline::before {
+                left: 20px;
+                transform: none;
+            }
+
+            .timeline-item {
+                min-height: auto;
+                padding-left: 60px;
+                margin-bottom: 60px;
+            }
+
+            .timeline-card {
+                width: 100%;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-arm {
+                left: 20px !important;
+                right: auto !important;
+                width: 40px;
+            }
+
+            .timeline-card {
+                margin-left: 20px;
+            }
+
+            .timeline-end-arrow {
+                left: 20px;
+            }
+
+            .timeline-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-content">
+
+        <h1 class="logo">
+            <a href="../index.html">SD</a>
+        </h1>
+
+        <input
+            type="checkbox"
+            id="menu-toggle"
+            class="menu-toggle-checkbox"
+        >
+
+        <label for="menu-toggle" class="menu-toggle-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="academics.html" class="active">Academics</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="employment.html">Employment</a></li>
+                <li><a href="about.html">About Me</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- PAGE TITLE -->
+
+    <section class="page-intro">
+
+        <h1 class="page-title">
+            Academics
+        </h1>
+
+        <p class="page-description">
+            From calculus to chemistry, I try to challenge myself and explore as much as I can. Learning is not just in school for me, 
+            I experiment and try new things to get a better understanding of everything I can. Learning new skills opens so many doors, 
+            so I try to learn as much as I can. I focus on STEM disciplines, especially math and engineering.  
+
+        </p>
+
+    </section>
+
+
+    <div class="intro-divider">
+        <div class="intro-divider-line"></div>
+    </div>
+
+
+    <!-- TIMELINE -->
+
+    <div class="timeline-container">
+
+        <div class="timeline">
+
+
+            <!-- =====================================
+                 FRESHMAN YEAR
+            ====================================== -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        2023 — 2024
+                    </div>
+
+                    <h2 class="timeline-title">
+                        Freshman Year
+                    </h2>
+
+                    <p class="timeline-description">
+                        In freshman year, I wanted to explore the school, most of the people there have gone to Newark Charter since kindergarten. I joined lots of clubs and had lots of fun in soccer. As this was my first year, It was hard to get all the classes I wanted, but I was still learning and having fun. 
+                    </p>
+
+                    <div class="academic-tags">
+                        <span class="academic-tag">H - Integrated Math II</span>
+                        <span class="academic-tag">PLTW Intro to Engineering</span>                        
+                        <span class="academic-tag">H - Biology</span>
+                        <span class="academic-tag">CAD Certification 1 and 2</span>
+                        <span class="academic-tag">Joined TSA</span>
+                    </div>
+
+                </div>
+
+                <div class="timeline-arm"></div>
+                <div class="timeline-dot"></div>
+
+            </div>
+
+
+            <!-- =====================================
+                 SOPHOMORE YEAR
+            ====================================== -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        2024 — 2025
+                    </div>
+
+                    <h2 class="timeline-title">
+                        Sophomore Year
+                    </h2>
+
+                    <p class="timeline-description">
+                        Sophomore year was when I started trying to challenge myself more. I took 3 APs, which were very challenging, but helped me learn studying techniques. This was the first math AP I took and I was addicted. It was very challenging, but when I understood a question, or was able to think and solve a hard problem, I was euphoric.
+
+                    </p>
+
+                    <div class="academic-tags">
+                        <span class="academic-tag">AP - Precalculus</span>
+                        <span class="academic-tag">PLTW Principals of Engineering</span>                        
+                        <span class="academic-tag">H - Chemistry</span>
+                        <span class="academic-tag">AP - Seminar</span>
+                        <span class="academic-tag">UDel History award for NHD</span>
+                    </div>
+
+                </div>
+
+                <div class="timeline-arm"></div>
+                <div class="timeline-dot"></div>
+
+            </div>
+
+
+            <!-- =====================================
+                 JUNIOR YEAR
+            ====================================== -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        2025 — 2026
+                    </div>
+
+                    <h2 class="timeline-title">
+                        Junior Year
+                    </h2>
+
+                    <p class="timeline-description">
+                        I had some of my favorite classes in junior year. Engineering ramped up so we were doing real challenging projects, and with all my challenging math classes, I had a full load. I was able to get a good work and fun balance which was awesome, so I would study hard, and then play with friends. 
+
+                    </p>
+
+                    <div class="academic-tags">
+                        <span class="academic-tag">AP - Research</span>
+                        <span class="academic-tag">AP - Physics C: Mech</span>                        
+                        <span class="academic-tag">AP - Calculus AB</span>
+                        <span class="academic-tag">2nd place TSA Board Game Design</span>
+                        <span class="academic-tag">Chinese Honor Society Student Officer</span>
+                    </div>
+
+                </div>
+
+                <div class="timeline-arm"></div>
+                <div class="timeline-dot"></div>
+
+            </div>
+
+
+            <!-- =====================================
+                 SENIOR YEAR
+            ====================================== -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        2026 — 2027
+                    </div>
+
+                    <h2 class="timeline-title">
+                        Senior Year
+                    </h2>
+
+                    <p class="timeline-description">
+                        I continued to take challenging classes senior year. There are lots of memorization classes, so I am improving my active recall and memorization. I have had lots of fun with 3D art. Being able to take a break from hard classes, and let my creativity run wild has been very helpful for me. 
+
+                    </p>
+
+                    <div class="academic-tags">
+                        <span class="academic-tag">AP - Chemistry</span>
+                        <span class="academic-tag">AP - Calculus BC</span>                        
+                        <span class="academic-tag">Dual Enrolment Human Ananomy</span>
+                        <span class="academic-tag">3rd place TSA CAD Engineering</span>
+                        <span class="academic-tag">Asian Student Union President</span>
+                    </div>
+
+                </div>
+
+                <div class="timeline-arm"></div>
+                <div class="timeline-dot"></div>
+
+            </div>
+
+
+            <!-- =====================================
+                 FUTURE ENDEAVORS
+            ====================================== -->
+
+            <div class="timeline-item future-item">
+
+                <div class="timeline-card future-card">
+
+                    <div class="timeline-year">
+                        Beyond High School
+                    </div>
+
+                    <h2 class="timeline-title">
+                        Future Endeavors
+                    </h2>
+
+                    <p class="timeline-description">
+                        In the future, I hope to study more STEM disciplines and become a maker. I want to build devices that can help people, so I need to learn as much as I can about how to build. I plan to go to college for Engineering, with a minor in Business and someday make my own medical device business.
+                    </p>
+
+                    <div class="academic-tags">
+                        <span class="academic-tag">Engineering</span>
+                        <span class="academic-tag">Medical devices</span>
+                        <span class="academic-tag">Entrepreneur</span>
+                    </div>
+
+                </div>
+
+                <div class="timeline-arm"></div>
+                <div class="timeline-dot"></div>
+
+            </div>
+
+
+            <!-- ARROW -->
+
+            <div class="timeline-end-arrow"></div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-nav-links">
+            <a href="../index.html">Home</a>
+            <a href="academics.html">Academics</a>
+            <a href="projects.html">Projects</a>
+            <a href="employment.html">Employment</a>
+            <a href="about.html">About Me</a>
+        </div>
+
+        <div class="social-links">
+            <a href="mailto:sebastianduker@gmail.com">
+                Email
+            </a>
+
+            <a href="https://github.com/Cbassss" target="_blank">
+                GitHub
+            </a>
+        </div>
+
+        <p class="copyright">
+            &copy; 2026 Sebastian Duker. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     SCROLL ANIMATION
+========================================= -->
+
+<script>
+
+    const timelineItems =
+        document.querySelectorAll(".timeline-item");
+
+    const observer =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.25
+            }
+        );
+
+
+    timelineItems.forEach((item) => {
+
+        observer.observe(item);
+
+    });
+
+</script>
+
+</body>
+</html>

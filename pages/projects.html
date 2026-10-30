@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects | Sebastian Duker</title>
+
+    <link rel="stylesheet" href="../styles.css">
+
+    <style>
+
+        /* =========================================
+           PAGE HEADER
+        ========================================= */
+
+        .page-intro {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 20px 2rem 20px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            gap: 15px;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 6rem;
+            font-weight: 700;
+
+            color: var(--teal-glow);
+
+            line-height: 1;
+            margin: 0;
+        }
+
+        .page-description {
+            max-width: 1100px;
+
+            font-size: 1.25rem;
+            color: #cccccc;
+
+            margin: 0;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           DIVIDER
+        ========================================= */
+
+        .intro-divider {
+            max-width: 1100px;
+
+            margin: 0 auto 3rem auto;
+
+            padding: 0 20px;
+        }
+
+        .intro-divider-line {
+            border-bottom: 2px solid var(--teal-dark);
+
+            width: 100%;
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .projects-container {
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 0 20px 6rem 20px;
+        }
+
+
+        /* =========================================
+           PROJECT FADE-IN
+        ========================================= */
+
+        .project {
+            margin-bottom: 80px;
+
+            padding-bottom: 60px;
+
+            border-bottom: 2px solid var(--teal-dark);
+
+            /* Hidden before scrolling into view */
+            opacity: 0;
+
+            transform: translateY(25px);
+
+            /* Smooth fade and movement */
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .project.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+        .project:last-child {
+            border-bottom: none;
+
+            margin-bottom: 0;
+        }
+
+
+        /* =========================================
+           IMAGE CAROUSEL
+        ========================================= */
+
+        .image-carousel {
+            position: relative;
+
+            max-width: 400px;
+            max-height: 550px;
+
+            margin: auto;
+
+            overflow: visible;
+
+            border-radius: 8px;
+        }
+
+        .image-carousel img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            /*
+             * Images overlap so they can
+             * smoothly fade into each other.
+             */
+            display: block;
+
+            opacity: 0;
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            border-radius: 8px;
+
+            transition: opacity 0.5s ease;
+        }
+
+        .image-carousel img.active {
+            opacity: 1;
+
+            position: relative;
+        }
+
+
+        /* =========================================
+           CAROUSEL ARROWS
+        ========================================= */
+
+        .arrow {
+            position: absolute;
+
+            top: 50%;
+
+            /*
+             * IMPORTANT:
+             * This keeps the arrow vertically centered.
+             */
+            transform: translateY(-50%);
+
+            background: transparent;
+
+            border: none;
+
+            color: rgba(255, 255, 255, 0.75);
+
+            font-size: 1.8rem;
+
+            font-family: Arial, sans-serif;
+
+            font-weight: 300;
+
+            line-height: 1;
+
+            padding: 10px;
+
+            cursor: pointer;
+
+            z-index: 5;
+
+            /*
+             * Only color and opacity transition here.
+             * No transform transition means the arrow
+             * cannot shift vertically.
+             */
+            transition:
+                color 0.25s ease,
+                opacity 0.25s ease;
+        }
+
+
+        /* Arrow positions */
+
+        .arrow-left {
+            left: -42px;
+        }
+
+        .arrow-right {
+            right: -42px;
+        }
+
+
+        /*
+         * Make the arrow slightly larger on hover
+         *
+         * Instead of scaling the button itself,
+         * we use font-size.
+         *
+         * This means the center position stays fixed.
+         */
+
+        .arrow:hover {
+            background: transparent;
+
+            color: var(--teal-glow);
+
+            font-size: 2rem;
+
+            opacity: 1;
+        }
+
+
+        /* =========================================
+           ARROW FADE
+        ========================================= */
+
+        .image-carousel .arrow {
+            opacity: 0.55;
+        }
+
+        .image-carousel:hover .arrow {
+            opacity: 0.85;
+        }
+
+
+        /* =========================================
+           CAROUSEL DOTS
+        ========================================= */
+
+        .carousel-dots {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 14px;
+        }
+
+        .carousel-dot {
+            width: 7px;
+            height: 7px;
+
+            padding: 0;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background-color: #555;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background-color: var(--teal-glow);
+
+            transform: scale(1.25);
+        }
+
+        .carousel-dot:hover {
+            background-color: var(--teal-glow);
+        }
+
+
+        /* =========================================
+           PROJECT INFORMATION
+        ========================================= */
+
+        .project-info {
+            text-align: center;
+
+            margin-top: 20px;
+        }
+
+        .project-title {
+            font-size: 26px;
+
+            font-weight: bold;
+
+            color: var(--teal-dark);
+
+            margin-top: 16px;
+        }
+
+        .text-box {
+            max-width: 550px;
+
+            margin: 0 auto;
+
+            padding: 0 10px;
+        }
+
+        .project-description {
+            font-size: 18px;
+
+            margin-top: 12px;
+
+            color: var(--text-main);
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           PROJECT TAGS
+        ========================================= */
+
+        .project-tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin: 24px auto 0 auto;
+
+            max-width: 600px;
+        }
+
+        .tag-bubble {
+            background-color: rgba(0, 210, 190, 0.08);
+
+            border: 1px solid var(--teal-dark);
+
+            color: var(--teal-glow);
+
+            padding: 6px 16px;
+
+            border-radius: 20px;
+
+            font-size: 0.9rem;
+
+            font-weight: 500;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =========================================
+           PROJECT BUTTON
+        ========================================= */
+
+        .project-info .cta-btn {
+            margin-top: 32px;
+
+            display: inline-block;
+        }
+
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 840px) {
+
+            .page-intro {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                padding-top: 6rem;
+
+                gap: 15px;
+            }
+
+            .page-title {
+                font-size: 3.5rem;
+            }
+
+            .page-description {
+                font-size: 1.1rem;
+            }
+
+
+            /* Keep arrows near the image */
+
+            .arrow-left {
+                left: 5px;
+            }
+
+            .arrow-right {
+                right: 5px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header class="header">
+
+        <div class="header-content">
+
+            <h1 class="logo">
+                <a href="../index.html">SD</a>
+            </h1>
+
+
+            <input
+                type="checkbox"
+                id="menu-toggle"
+                class="menu-toggle-checkbox"
+            >
+
+
+            <label
+                for="menu-toggle"
+                class="menu-toggle-label"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </label>
+
+
+            <nav class="nav">
+
+                <ul>
+
+                    <li>
+                        <a href="../index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="academics.html">
+                            Academics
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="projects.html" class="active">
+                            Projects
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="employment.html">
+                            Employment
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About Me
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================= -->
+
+    <main>
+
+
+        <!-- PAGE INTRO -->
+
+        <section class="page-intro">
+
+            <h1 class="page-title">
+                Projects
+            </h1>
+
+
+            <p class="page-description">
+
+                I love letting my imagination run wild. The feeling that I get when I finish a project is hard to explain. 
+                It is so rewarding to actually make something. Being able to make an idea come to life with no instructions 
+                and only what you know feels so amazing. Most of my projects started from a cool video or just from some interesting ideas. 
+                I hope to one day make a medical machine that can help people. 
+
+            </p>
+
+        </section>
+
+
+        <!-- DIVIDER -->
+
+        <div class="intro-divider">
+
+            <div class="intro-divider-line"></div>
+
+        </div>
+
+
+        <!-- PROJECTS -->
+
+        <div class="projects-container">
+
+
+            <!-- =====================================
+                 HAPTIC FEEDBACK
+            ====================================== -->
+
+            <div class="project">
+
+                <div class="image-carousel" id="carousel8">
+
+                    <img
+                        src="../images/HapticDevice1.jpg"
+                        alt="Prosthetic Image 1"
+                        class="active"
+                    >
+
+                    <img
+                        src="../images/HapticDevice2.jpg"
+                        alt="Prosthetic Image 2"
+                    >
+
+                    <img
+                        src="../images/HapticDevice3.jpg"
+                        alt="Prosthetic Image 3"
+                    >
+
+
+                    <button
+                        class="arrow arrow-left"
+                        onclick="changeImage('carousel8', -1)"
+                    >‹</button>
+
+
+                    <button
+                        class="arrow arrow-right"
+                        onclick="changeImage('carousel8', 1)"
+                    >›</button>
+
+
+                    <div class="carousel-dots"></div>
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <h2 class="project-title">
+                        Mechanically Passive Haptic Feedback System
+                    </h2>
+
+
+                    <div class="text-box">
+
+                        <p class="project-description">
+
+                            I was super interested in biomedical engineering,
+                            and wanted to learn more, so I decided to do a
+                            project on prosthetics. I designed and tested ways
+                            to bring the sense of touch back to people who
+                            can't afford expensive hand prosthetics. This
+                            device is integratable into an open source 3D
+                            printed prosthetic model (e-NABLE phoenix v3 hand).
+                            This device is also 3D printed, and while it's not
+                            entirely 3D printable, it is still very cost
+                            effective compared to the other devices on the market.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag-bubble">
+                            Biomedical Engineering
+                        </span>
+
+                        <span class="tag-bubble">
+                            3D Printing
+                        </span>
+
+                        <span class="tag-bubble">
+                            Prosthetic Integration
+                        </span>
+
+                        <span class="tag-bubble">
+                            Low-Cost Design
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://github.com/Cbassss/Mechanically_Passive_3D_Printable_Haptic_Feedback"
+                        class="cta-btn"
+                        target="_blank"
+                    >
+                        Click to view project
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 FPV DRONE
+            ====================================== -->
+
+            <div class="project">
+
+                <div class="image-carousel" id="carousel2">
+
+                    <img
+                        src="../images/drone1.jpg"
+                        alt="Drone Image 1"
+                        class="active"
+                    >
+
+                    <img
+                        src="../images/drone2.jpg"
+                        alt="Drone Image 2"
+                    >
+
+                    <img
+                        src="../images/drone3.jpg"
+                        alt="Drone Image 3"
+                    >
+
+                    <img
+                        src="../images/drone4.jpg"
+                        alt="Drone Image 4"
+                    >
+
+
+                    <button
+                        class="arrow arrow-left"
+                        onclick="changeImage('carousel2', -1)"
+                    >‹</button>
+
+
+                    <button
+                        class="arrow arrow-right"
+                        onclick="changeImage('carousel2', 1)"
+                    >›</button>
+
+
+                    <div class="carousel-dots"></div>
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <h2 class="project-title">
+                        FPV Drone
+                    </h2>
+
+
+                    <div class="text-box">
+
+                        <p class="project-description">
+
+                            I built an FPV drone using my research and CAD skills.
+                            I designed the frame to be strong and light, ensuring
+                            it is stable while still being 3D printed.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag-bubble">
+                            Structural CAD Analysis
+                        </span>
+
+                        <span class="tag-bubble">
+                            Lightweight Prototyping
+                        </span>
+
+                        <span class="tag-bubble">
+                            Flight Systems
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+<!-- =====================================
+                 Sock Aid
+            ====================================== -->
+
+            <div class="project">
+
+                <div class="image-carousel" id="carousel7">
+
+                    <img
+                        src="../images/Sock1.jpeg"
+                        alt="Sock Aid Image 1"
+                        class="active"
+                    >
+
+                    <img
+                        src="../images/Sock2.jpeg"
+                        alt="Sock Aid Image 2"
+                    >
+
+                    <img
+                        src="../images/Sock3.jpeg"
+                        alt="Sock Aid Image 3"
+                    >
+
+                    <button
+                        class="arrow arrow-left"
+                        onclick="changeImage('carousel7', -1)"
+                    >‹</button>
+
+
+                    <button
+                        class="arrow arrow-right"
+                        onclick="changeImage('carousel7', 1)"
+                    >›</button>
+
+
+                    <div class="carousel-dots"></div>
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <h2 class="project-title">
+                        Sock Donner
+                    </h2>
+
+
+                    <div class="text-box">
+
+                        <p class="project-description">
+
+                            A few months ago, my grandfather reached out 
+                            to me because he was having difficulty putting on his 
+                            socks. The sock aids available on the market were often
+                             one-size-fits-all and didn't accommodate his needs. I
+                              decided to design something better. I developed a device
+                              that starts compact, making it easy to put a sock on, and
+                               expands to accommodate different foot sizes. My goal was 
+                               to create a more adaptable and accessible solution that makes 
+                               putting on socks easier.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag-bubble">
+                            CAD & 3D Printing
+                        </span>
+
+                        <span class="tag-bubble">
+                            Medical Device Innovation
+                        </span>
+
+                        <span class="tag-bubble">
+                            Product Development
+                        </span>
+
+                    </div>
+
+
+                    
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 SOCCER CONE
+            ====================================== -->
+
+            <div class="project">
+
+                <div class="image-carousel" id="carousel7">
+
+                    <img
+                        src="../images/Crazycone1.jpg"
+                        alt="Soccer cone Image 1"
+                        class="active"
+                    >
+
+                    <img
+                        src="../images/Crazycone2.jpg"
+                        alt="Soccer cone Image 2"
+                    >
+
+                    <img
+                        src="../images/Crazycone3.jpg"
+                        alt="Soccer cone Image 3"
+                    >
+
+                    <img
+                        src="../images/Crazycone4.jpg"
+                        alt="Soccer cone Image 4"
+                    >
+
+
+                    <button
+                        class="arrow arrow-left"
+                        onclick="changeImage('carousel7', -1)"
+                    >‹</button>
+
+
+                    <button
+                        class="arrow arrow-right"
+                        onclick="changeImage('carousel7', 1)"
+                    >›</button>
+
+
+                    <div class="carousel-dots"></div>
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <h2 class="project-title">
+                        Agility Soccer Cone Trainer
+                    </h2>
+
+
+                    <div class="text-box">
+
+                        <p class="project-description">
+
+                            I have been playing soccer for most of my life,
+                            and I wanted to build something that could help
+                            me improve my skills. I sometimes practice by
+                            myself, and it is hard to train agility, and
+                            real world decision making. I decided to build
+                            something to fix this issue. With a friend, we
+                            designed a soccer cone that could move around
+                            and react to players movements.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag-bubble">
+                            Robotics & Mechatronics
+                        </span>
+
+                        <span class="tag-bubble">
+                            Interactive Sports Tech
+                        </span>
+
+                        <span class="tag-bubble">
+                            Rapid Prototyping
+                        </span>
+
+                        <span class="tag-bubble">
+                            Design Competition Finalist
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://sites.google.com/ncs.charter.k12.de.us/crazycones"
+                        class="cta-btn"
+                        target="_blank"
+                    >
+                        Click to view project
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 ARDUINO SWORD
+            ====================================== -->
+
+            <div class="project">
+
+                <div class="image-carousel" id="carousel1">
+
+                    <img
+                        src="../images/sword1.jpg"
+                        alt="Katana Image 1"
+                        class="active"
+                    >
+
+                    <img
+                        src="../images/sword3.jpg"
+                        alt="Katana Image 2"
+                    >
+
+                    <img
+                        src="../images/sword2.jpg"
+                        alt="Katana Image 3"
+                    >
+
+                    <img
+                        src="../images/sword4.jpg"
+                        alt="Katana Image 4"
+                    >
+
+
+                    <button
+                        class="arrow arrow-left"
+                        onclick="changeImage('carousel1', -1)"
+                    >‹</button>
+
+
+                    <button
+                        class="arrow arrow-right"
+                        onclick="changeImage('carousel1', 1)"
+                    >›</button>
+
+
+                    <div class="carousel-dots"></div>
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <h2 class="project-title">
+                        Arduino Sword
+                    </h2>
+
+
+                    <div class="text-box">
+
+                        <p class="project-description">
+
+                            Inspired by the book H.I.V.E., I created a sword
+                            that pulses deep purple. Using CAD skills, I
+                            designed the frame to encase the Arduino and
+                            programmed it to pulse the RGB LED.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag-bubble">
+                            Arduino Programming
+                        </span>
+
+                        <span class="tag-bubble">
+                            Fusion 360 CAD
+                        </span>
+
+                        <span class="tag-bubble">
+                            Custom Electronics
+                        </span>
+
+                        <span class="tag-bubble">
+                            LED Illumination
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="https://github.com/Cbassss/RavenKatanaProject"
+                        class="cta-btn"
+                        target="_blank"
+                    >
+                        Click to view project
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 TIC TAC WATCH
+            ====================================== -->
+
+            <div class="project">
+
+                <div class="image-carousel" id="carousel4">
+
+                    <img
+                        src="../images/Ticktack1.jpeg"
+                        alt="ticktack Image 1"
+                        class="active"
+                    >
+
+                    <img
+                        src="../images/TickTack2.jpeg"
+                        alt="ticktack Image 2"
+                    >
+
+                    <img
+                        src="../images/TickTack3.jpeg"
+                        alt="ticktack Image 3"
+                    >
+
+                    <img
+                        src="../images/TickTack4.png"
+                        alt="ticktack Image 4"
+                    >
+
+                    <img
+                        src="../images/TickTack5.png"
+                        alt="ticktack Image 5"
+                    >
+
+
+                    <button
+                        class="arrow arrow-left"
+                        onclick="changeImage('carousel4', -1)"
+                    >‹</button>
+
+
+                    <button
+                        class="arrow arrow-right"
+                        onclick="changeImage('carousel4', 1)"
+                    >›</button>
+
+
+                    <div class="carousel-dots"></div>
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <h2 class="project-title">
+                        Tic Tac Watch
+                    </h2>
+
+
+                    <div class="text-box">
+
+                        <p class="project-description">
+
+                            I love eating Tic Tacs. I would always have a pack
+                            in my soccer bag. I designed this so I will always
+                            have Tic Tacs on me when I get hungry. It uses a
+                            spring I found to act as an archimedes screw and
+                            push a platform to push into the Tic Tacs so they
+                            wouldn't shake around and make sound. I also made
+                            the watch 2 parts so you can replenish the Tic Tacs easier.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag-bubble">
+                            Mechanical Mechanisms
+                        </span>
+
+                        <span class="tag-bubble">
+                            Spring Load Assembly
+                        </span>
+
+                        <span class="tag-bubble">
+                            Product Design
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 UMBRELLA HOOK
+            ====================================== -->
+
+            <div class="project">
+
+                <div class="image-carousel" id="carousel5">
+
+                    <img
+                        src="../images/Umbrella1.JPG"
+                        alt="Umbrella Image 1"
+                        class="active"
+                    >
+
+                    <img
+                        src="../images/Umbrella2.png"
+                        alt="Umbrella Image 2"
+                    >
+
+                    <img
+                        src="../images/Umbrella3.JPG"
+                        alt="Umbrella Image 3"
+                    >
+
+
+                    <button
+                        class="arrow arrow-left"
+                        onclick="changeImage('carousel5', -1)"
+                    >‹</button>
+
+
+                    <button
+                        class="arrow arrow-right"
+                        onclick="changeImage('carousel5', 1)"
+                    >›</button>
+
+
+                    <div class="carousel-dots"></div>
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <h2 class="project-title">
+                        Umbrella Hook
+                    </h2>
+
+
+                    <div class="text-box">
+
+                        <p class="project-description">
+
+                            My family wanted to add some color to our closet,
+                            I had the idea of painting an umbrella, and having
+                            the hook of it be an actual hook you can put hats on.
+                            After some modeling, and some redesigning, I printed
+                            the final version out. It hasn’t broken yet so I
+                            think it's a success.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag-bubble">
+                            Functional Art
+                        </span>
+
+                        <span class="tag-bubble">
+                            Iterative Redesign
+                        </span>
+
+                        <span class="tag-bubble">
+                            3D Printing
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 BOWL CLIPS
+            ====================================== -->
+
+            <div class="project">
+
+                <div class="image-carousel" id="carousel3">
+
+                    <img
+                        src="../images/bowl1.jpg"
+                        alt="Bowl Image 1"
+                        class="active"
+                    >
+
+                    <img
+                        src="../images/bowl2.jpg"
+                        alt="Bowl Image 2"
+                    >
+
+                    <img
+                        src="../images/bowl.jpg"
+                        alt="Bowl Image 3"
+                    >
+
+
+                    <button
+                        class="arrow arrow-left"
+                        onclick="changeImage('carousel3', -1)"
+                    >‹</button>
+
+
+                    <button
+                        class="arrow arrow-right"
+                        onclick="changeImage('carousel3', 1)"
+                    >›</button>
+
+
+                    <div class="carousel-dots"></div>
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <h2 class="project-title">
+                        Bowl Clips
+                    </h2>
+
+
+                    <div class="text-box">
+
+                        <p class="project-description">
+
+                            Designed bowl clips to prevent counter scratches.
+                            Each clip is modeled after little people with
+                            different poses, bringing a fun twist to functionality.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-tags">
+
+                        <span class="tag-bubble">
+                            Custom Character Modeling
+                        </span>
+
+                        <span class="tag-bubble">
+                            Utility Hardware
+                        </span>
+
+                        <span class="tag-bubble">
+                            Consumer Design
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-nav-links">
+
+                <a href="../index.html">Home</a>
+
+                <a href="academics.html">
+                    Academics
+                </a>
+
+                <a href="projects.html">
+                    Projects
+                </a>
+
+                <a href="employment.html">
+                    Employment
+                </a>
+
+                <a href="about.html">
+                    About Me
+                </a>
+
+            </div>
+
+
+            <div class="social-links">
+
+                <a href="mailto:sebastianduker@gmail.com">
+                    Email
+                </a>
+
+                <a
+                    href="https://github.com/Cbassss"
+                    target="_blank"
+                >
+                    GitHub
+                </a>
+
+            </div>
+
+
+            <p class="copyright">
+                &copy; 2026 Sebastian Duker. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+
+        /* =========================================
+           SET UP EACH CAROUSEL
+        ========================================= */
+
+        function setupCarousel(carousel) {
+
+            const images =
+                carousel.getElementsByTagName('img');
+
+            const dotsContainer =
+                carousel.querySelector('.carousel-dots');
+
+
+            if (!dotsContainer) {
+                return;
+            }
+
+
+            dotsContainer.innerHTML = '';
+
+
+            /* Create a dot for every image */
+
+            for (let i = 0; i < images.length; i++) {
+
+                const dot =
+                    document.createElement('button');
+
+
+                dot.classList.add('carousel-dot');
+
+
+                /* Make current image's dot active */
+
+                if (
+                    images[i].classList.contains('active')
+                ) {
+
+                    dot.classList.add('active');
+
+                }
+
+
+                /* Clicking dot */
+
+                dot.addEventListener(
+                    'click',
+                    function () {
+
+                        showImage(
+                            carousel,
+                            i
+                        );
+
+                    }
+                );
+
+
+                dotsContainer.appendChild(dot);
+
+            }
+
+        }
+
+
+        /* =========================================
+           SHOW A SPECIFIC IMAGE
+        ========================================= */
+
+        function showImage(carousel, index) {
+
+            const images =
+                carousel.getElementsByTagName('img');
+
+            const dots =
+                carousel.querySelectorAll('.carousel-dot');
+
+
+            /* Remove active from all */
+
+            for (let i = 0; i < images.length; i++) {
+
+                images[i].classList.remove('active');
+
+
+                if (dots[i]) {
+
+                    dots[i].classList.remove('active');
+
+                }
+
+            }
+
+
+            /* Activate selected image */
+
+            images[index].classList.add('active');
+
+
+            if (dots[index]) {
+
+                dots[index].classList.add('active');
+
+            }
+
+        }
+
+
+        /* =========================================
+           ARROW IMAGE CHANGE
+        ========================================= */
+
+        function changeImage(
+            carouselId,
+            direction
+        ) {
+
+            const carousel =
+                document.getElementById(carouselId);
+
+            const images =
+                carousel.getElementsByTagName('img');
+
+
+            let activeIndex = 0;
+
+
+            /* Find active image */
+
+            for (
+                let i = 0;
+                i < images.length;
+                i++
+            ) {
+
+                if (
+                    images[i].classList.contains('active')
+                ) {
+
+                    activeIndex = i;
+
+                    break;
+
+                }
+
+            }
+
+
+            /* Calculate next image */
+
+            let nextIndex =
+                activeIndex + direction;
+
+
+            /* Loop to beginning */
+
+            if (
+                nextIndex >= images.length
+            ) {
+
+                nextIndex = 0;
+
+            }
+
+
+            /* Loop to end */
+
+            if (
+                nextIndex < 0
+            ) {
+
+                nextIndex =
+                    images.length - 1;
+
+            }
+
+
+            showImage(
+                carousel,
+                nextIndex
+            );
+
+        }
+
+
+        /* =========================================
+           INITIALIZE CAROUSELS
+        ========================================= */
+
+        document
+            .querySelectorAll('.image-carousel')
+            .forEach(
+                carousel => {
+
+                    setupCarousel(carousel);
+
+                }
+            );
+
+
+        /* =========================================
+           PROJECT SCROLL FADE-IN
+        ========================================= */
+
+        const projectObserver =
+            new IntersectionObserver(
+
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target
+                                    .classList
+                                    .add('visible');
+
+
+                                /*
+                                 * Stop watching once
+                                 * the animation happens.
+                                 */
+
+                                projectObserver.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    /*
+                     * Fade in when 15% of
+                     * the project is visible.
+                     */
+                    threshold: 0.15
+                }
+
+            );
+
+
+        /* Watch every project */
+
+        document
+            .querySelectorAll('.project')
+            .forEach(
+                project => {
+
+                    projectObserver.observe(
+                        project
+                    );
+
+                }
+            );
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Employment | Sebastian Duker</title>
+
+    <link
+        rel="stylesheet"
+        href="../styles.css"
+    >
+
+    <style>
+
+
+        /* =========================================
+           PAGE HEADER
+        ========================================= */
+
+        .page-intro {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 20px 2rem 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+            width: 100%;
+        }
+
+
+        .page-title {
+            font-size: 6rem;
+
+            font-weight: 700;
+
+            color: var(--teal-glow);
+
+            line-height: 1;
+
+            margin: 0;
+
+        }
+
+
+        .page-description {
+            max-width: 1100px;
+
+            font-size: 1.25rem;
+
+            color: #cccccc;
+
+            margin: 0;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================================
+           DIVIDER
+        ========================================= */
+
+        .intro-divider {
+
+            max-width: 1100px;
+
+            margin: 0 auto 0 auto;
+
+            padding: 0 20px;
+
+        }
+
+
+        .intro-divider-line {
+
+            border-bottom:
+                2px solid var(--teal-dark);
+
+            width: 100%;
+
+        }
+
+
+        /* =========================================
+           MAIN SCROLL AREA
+        ========================================= */
+
+        .employment-scroll {
+
+            position: relative;
+
+            height: 450vh;
+
+        }
+
+
+        .employment-sticky {
+
+            position: sticky;
+
+            top: 0;
+
+            height: 100vh;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .employment-content {
+
+            width: 100%;
+
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding: 0 30px;
+
+            display: grid;
+
+            grid-template-columns:
+                190px
+                1fr
+                1.35fr;
+
+            align-items: center;
+
+            gap: 50px;
+
+        }
+
+
+        /* =========================================
+           LEGEND
+        ========================================= */
+
+        .employment-legend {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 22px;
+
+        }
+
+
+        .legend-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            opacity: 0.55;
+
+            transform:
+                translateX(0);
+
+            transition:
+                opacity 0.35s ease,
+                transform 0.35s ease;
+
+        }
+
+
+        .legend-item.active {
+
+            opacity: 1;
+
+            transform:
+                translateX(8px);
+
+        }
+
+
+        .legend-color {
+
+            width: 14px;
+
+            height: 14px;
+
+            border-radius: 3px;
+
+            flex-shrink: 0;
+
+            box-shadow:
+                0 0 5px
+                rgba(255,255,255,0.08);
+
+        }
+
+
+        .legend-item.active .legend-color {
+
+            box-shadow:
+                0 0 12px
+                currentColor;
+
+        }
+
+
+        .legend-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 2px;
+
+        }
+
+
+        .legend-name {
+
+            color: #eeeeee;
+
+            font-size: 0.95rem;
+
+            font-weight: 600;
+
+        }
+
+
+        /* =========================================
+           STORY
+        ========================================= */
+
+        .employment-story {
+
+            max-width: 430px;
+
+        }
+
+
+        .story-eyebrow {
+
+            color: var(--teal-glow);
+
+            font-size: 0.85rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            font-weight: 600;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .story-title {
+
+            color: #ffffff;
+
+            font-size: 2.5rem;
+
+            line-height: 1.1;
+
+            margin:
+                0 0 20px 0;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        .story-text {
+
+            color: #bdbdbd;
+
+            font-size: 1.08rem;
+
+            line-height: 1.7;
+
+            margin: 0;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        /* =========================================
+           CHART
+        ========================================= */
+
+        .employment-chart {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 10px;
+
+        }
+
+
+        #employmentChart {
+
+            width: 100%;
+
+            max-width: 600px;
+
+            height: auto;
+
+            overflow: visible;
+
+            transform-origin:
+                center center;
+
+            transition:
+                transform 0.05s linear;
+
+        }
+
+
+        .chart-shadow {
+
+            opacity: 0.15;
+
+            filter:
+                blur(25px);
+
+        }
+
+
+        .chart-slice {
+
+            stroke:
+                #101010;
+
+            stroke-width:
+                2;
+
+            vector-effect:
+                non-scaling-stroke;
+
+            transition:
+                opacity 0.2s ease,
+                filter 0.2s ease,
+                stroke 0.2s ease,
+                stroke-width 0.2s ease;
+
+        }
+
+
+        /* =========================================
+           SCROLL HINT
+        ========================================= */
+
+        .scroll-hint {
+
+            position: absolute;
+
+            bottom: 30px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #777;
+
+            font-size: 0.75rem;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            transition:
+                opacity 0.5s ease;
+
+        }
+
+
+        .scroll-arrow {
+
+            width: 18px;
+
+            height: 28px;
+
+            border:
+                1px solid var(--teal-dark);
+
+            border-radius: 12px;
+
+            position: relative;
+
+        }
+
+
+        .scroll-arrow::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 3px;
+
+            height: 7px;
+
+            border-radius: 3px;
+
+            background:
+                var(--teal-glow);
+
+            left: 50%;
+
+            top: 5px;
+
+            transform:
+                translateX(-50%);
+
+            animation:
+                scrollDown 1.5s infinite;
+
+        }
+
+
+        @keyframes scrollDown {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translate(-50%, 0);
+
+            }
+
+            40% {
+
+                opacity: 1;
+
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    translate(-50%, 10px);
+
+            }
+
+        }
+
+
+        /* =========================================
+           EXPERIENCE SECTION
+        ========================================= */
+
+        .employment-details {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding:
+                7rem 20px 8rem 20px;
+
+        }
+
+
+        .details-heading {
+
+            font-size: 2.8rem;
+
+            color:
+                var(--teal-glow);
+
+            margin:
+                0 0 50px 0;
+
+        }
+
+
+        .employment-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 30px;
+
+        }
+
+
+        .employment-card {
+
+            border:
+                1px solid var(--teal-dark);
+
+            border-radius: 10px;
+
+            padding: 35px;
+
+            background:
+                rgba(0, 210, 190, 0.025);
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+
+        }
+
+
+        .employment-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                var(--teal-glow);
+
+            background:
+                rgba(0, 210, 190, 0.06);
+
+        }
+
+
+        .employment-card h2 {
+
+            color:
+                var(--teal-glow);
+
+            font-size:
+                1.7rem;
+
+            margin:
+                0 0 8px 0;
+
+        }
+
+
+        .employment-card h3 {
+
+            color:
+                #aaa;
+
+            font-size:
+                1rem;
+
+            font-weight:
+                400;
+
+            margin:
+                0 0 20px 0;
+
+        }
+
+
+        .employment-card p {
+
+            color:
+                var(--text-main);
+
+            line-height:
+                1.7;
+
+            font-size:
+                1rem;
+
+            margin: 0;
+
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .employment-content {
+
+                grid-template-columns:
+                    150px
+                    1fr;
+
+                gap: 30px;
+
+            }
+
+
+            .employment-chart {
+
+                grid-column:
+                    1 / -1;
+
+                grid-row:
+                    1;
+
+                min-height:
+                    300px;
+
+            }
+
+
+            .employment-legend {
+
+                grid-column:
+                    1;
+
+                grid-row:
+                    2;
+
+            }
+
+
+            .employment-story {
+
+                grid-column:
+                    2;
+
+                grid-row:
+                    2;
+
+            }
+
+
+            #employmentChart {
+
+                max-width:
+                    450px;
+
+            }
+
+
+            .story-title {
+
+                font-size:
+                    2rem;
+
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 700px) {
+
+            .page-intro {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+                padding-top:
+                    6rem;
+
+                gap:
+                    15px;
+
+            }
+
+
+            .page-title {
+
+                font-size:
+                    3.5rem;
+
+            }
+
+
+            .page-description {
+
+                font-size:
+                    1.1rem;
+
+            }
+
+
+            .employment-scroll {
+
+                height:
+                    350vh;
+
+            }
+
+
+            .employment-content {
+
+                display:
+                    flex;
+
+                flex-direction:
+                    column;
+
+                justify-content:
+                    center;
+
+                gap:
+                    18px;
+
+                padding:
+                    70px 25px 40px 25px;
+
+            }
+
+
+            .employment-chart {
+
+                order:
+                    1;
+
+                min-height:
+                    270px;
+
+                width:
+                    100%;
+
+            }
+
+
+            .employment-legend {
+
+                order:
+                    2;
+
+                flex-direction:
+                    row;
+
+                flex-wrap:
+                    wrap;
+
+                justify-content:
+                    center;
+
+                gap:
+                    10px 18px;
+
+                width:
+                    100%;
+
+            }
+
+
+            .legend-item {
+
+                gap:
+                    7px;
+
+            }
+
+
+            .legend-name {
+
+                font-size:
+                    0.8rem;
+
+            }
+
+
+            .employment-story {
+
+                order:
+                    3;
+
+                text-align:
+                    center;
+
+                max-width:
+                    500px;
+
+            }
+
+
+            .story-title {
+
+                font-size:
+                    1.8rem;
+
+            }
+
+
+            .story-text {
+
+                font-size:
+                    0.95rem;
+
+            }
+
+
+            .employment-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .employment-details {
+
+                padding-top:
+                    5rem;
+
+            }
+
+
+            .details-heading {
+
+                font-size:
+                    2.3rem;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header class="header">
+
+        <div class="header-content">
+
+
+            <h1 class="logo">
+
+                <a href="../index.html">
+                    SD
+                </a>
+
+            </h1>
+
+
+            <input
+                type="checkbox"
+                id="menu-toggle"
+                class="menu-toggle-checkbox"
+            >
+
+
+            <label
+                for="menu-toggle"
+                class="menu-toggle-label"
+            >
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+            </label>
+
+
+            <nav class="nav">
+
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="employment.html" class="active">Employment</a></li>
+                <li><a href="about.html">About Me</a></li>
+            </ul>
+
+            </nav>
+
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================= -->
+
+    <main>
+
+
+        <!-- =====================================
+             PAGE INTRO
+        ====================================== -->
+
+        <section class="page-intro">
+
+
+            <h1 class="page-title">
+                Employment
+            </h1>
+
+
+            <p class="page-description">
+
+            Working is a great way to learn people skill, and responsibility. I have been able to learn so much and 
+            gain life skills from working and talking with people. Work has also taught me the value of money, and how
+             to save and grow it. Lots of these jobs have had situations that brought me out of my comfort zone, but that 
+             is exactly what grows people and I am glad to have experienced these.
+
+
+            </p>
+
+
+        </section>
+
+
+        <!-- =====================================
+             DIVIDER
+        ====================================== -->
+
+        <div class="intro-divider">
+
+            <div class="intro-divider-line"></div>
+
+        </div>
+
+
+        <!-- =====================================
+             SCROLL VISUALIZATION
+        ====================================== -->
+
+        <section
+            class="employment-scroll"
+            id="employmentScroll"
+        >
+
+
+            <div class="employment-sticky">
+
+
+                <div class="employment-content">
+
+
+                    <!-- =================================
+                         LEGEND
+                    ================================== -->
+
+                    <div class="employment-legend">
+
+
+                        <div
+                            class="legend-item active"
+                            data-index="0"
+                        >
+
+                            <span
+                                class="legend-color"
+                                style="
+                                    background:#00d2be;
+                                "
+                            ></span>
+
+
+                            <div class="legend-text">
+
+                                <span class="legend-name">
+                                    Lifeguarding
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="legend-item"
+                            data-index="1"
+                        >
+
+                            <span
+                                class="legend-color"
+                                style="
+                                    background:#008f83;
+                                "
+                            ></span>
+
+
+                            <div class="legend-text">
+
+                                <span class="legend-name">
+                                    Retail sales
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="legend-item"
+                            data-index="2"
+                        >
+
+                            <span
+                                class="legend-color"
+                                style="
+                                    background:#005f59;
+                                "
+                            ></span>
+
+
+                            <div class="legend-text">
+
+                                <span class="legend-name">
+                                    Lawn Mowing
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="legend-item"
+                            data-index="3"
+                        >
+
+                            <span
+                                class="legend-color"
+                                style="
+                                    background:#003b38;
+                                "
+                            ></span>
+
+
+                            <div class="legend-text">
+
+                                <span class="legend-name">
+                                    App
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- =================================
+                         STORY
+                    ================================== -->
+
+                    <div class="employment-story">
+
+
+                        <div class="story-eyebrow">
+                            My Work Experience
+                        </div>
+
+
+                        <h2
+                            class="story-title"
+                            id="storyTitle"
+                        >
+                            Lifeguarding
+                        </h2>
+
+
+                        <p
+                            class="story-text"
+                            id="storyText"
+                        >
+
+                            As a lifeguard, I helped keep patrons safe by monitoring 
+                            the pool, enforcing facility rules, and explaining to patrons
+                             why these rules needed to be followed. I also tested and maintained
+                              appropriate pool chemical levels to ensure a safe swimming environment.
+
+                        </p>
+
+
+                    </div>
+
+
+                    <!-- =================================
+                         CHART
+                    ================================== -->
+
+                    <div class="employment-chart">
+
+
+                        <svg
+                            id="employmentChart"
+                            viewBox="0 0 600 600"
+                            aria-label="
+                                Employment experience breakdown
+                            "
+                        >
+
+
+                            <defs>
+
+                                <filter
+                                    id="softShadow"
+                                    x="-50%"
+                                    y="-50%"
+                                    width="200%"
+                                    height="200%"
+                                >
+
+                                    <feGaussianBlur
+                                        stdDeviation="12"
+                                    />
+
+                                </filter>
+
+                            </defs>
+
+
+                            <g
+                                id="chartShadow"
+                                class="chart-shadow"
+                            >
+                            </g>
+
+
+                            <g id="chartSlices">
+                            </g>
+
+
+                        </svg>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================
+                     SCROLL HINT
+                ================================== -->
+
+                <div
+                    class="scroll-hint"
+                    id="scrollHint"
+                >
+
+                    <span>
+                        Scroll to explore
+                    </span>
+
+
+                    <div class="scroll-arrow"></div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+
+            <div class="footer-nav-links">
+
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+
+                <a href="academics.html">
+                    Academics
+                </a>
+
+
+                <a href="projects.html">
+                    Projects
+                </a>
+
+
+                <a href="employment.html">
+                    Employment
+                </a>
+
+
+                <a href="about.html">
+                    About Me
+                </a>
+
+
+            </div>
+
+
+            <div class="social-links">
+
+
+                <a href="mailto:sebastianduker@gmail.com">
+                    Email
+                </a>
+
+
+                <a
+                    href="https://github.com/Cbassss"
+                    target="_blank"
+                >
+                    GitHub
+                </a>
+
+
+            </div>
+
+
+            <p class="copyright">
+
+                &copy; 2026 Sebastian Duker.
+                All rights reserved.
+
+            </p>
+
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+
+        /* =========================================
+           EMPLOYMENT DATA
+        ========================================= */
+
+        const employmentData = [
+
+            {
+
+                name:
+                    "Lifeguarding",
+color:
+                    "#00d2be",
+
+                title:
+                    "Lifeguarding",
+
+                text:
+                    "As a lifeguard, I helped keep patrons safe by monitoring the pool, enforcing facility rules, and explaining to patrons why these rules needed to be followed. I also tested and maintained appropriate pool chemical levels to ensure a safe swimming environment."
+
+            },
+
+
+            {
+
+                name:
+                    "Retail Sales",
+color:
+                    "#008f83",
+
+                title:
+                    "Retail Sales",
+
+                text:
+                    "At Cramer's, I assisted customers with selecting and creating custom uniforms to meet their needs. I also handled challenging customer interactions by listening to concerns, communicating solutions, and working toward an understanding."
+
+            },
+
+
+            {
+
+                name:
+                    "Lawn Mowing",
+color:
+                    "#005f59",
+
+                title:
+                    "Lawn Mowing",
+
+                text:
+                    "I provided lawn-mowing services for a local homeowner, maintaining their lawn and keeping the property well-groomed. I also coordinated schedules with the homeowner to arrange convenient service times and ensure the work was completed as expected."
+
+            },
+
+
+            {
+
+                name:
+                    "Personal Projects",
+color:
+                    "#003b38",
+
+                title:
+                    "Personal Projects",
+
+                text:
+                    "I developed a Chrome extension that modifies how prices are displayed on shopping websites to help consumers become more conscious of their spending habits. I also made 3D-printed products for sale, gaining experience in product development, CAD design, manufacturing, and entrepreneurship."
+
+            }
+
+        ];
+
+
+        /* =========================================
+           SVG REFERENCES
+        ========================================= */
+
+        const svg =
+            document.getElementById(
+                "employmentChart"
+            );
+
+
+        const chartSlices =
+            document.getElementById(
+                "chartSlices"
+            );
+
+
+        const chartShadow =
+            document.getElementById(
+                "chartShadow"
+            );
+
+
+        /* =========================================
+           CHART DIMENSIONS
+        ========================================= */
+
+        const centerX =
+            300;
+
+        const centerY =
+            300;
+
+        const pieRadius =
+            190;
+
+        const barWidth =
+            500;
+
+        const barHeight =
+            125;
+
+        const barX =
+            50;
+
+        const barY =
+            237.5;
+
+
+        /* =========================================
+           CREATE PIE POINTS
+        ========================================= */
+
+        function createPiePoints(
+            startAngle,
+            endAngle,
+            radius,
+            count = 32
+        ) {
+
+            const points = [];
+
+
+            points.push([
+                centerX,
+                centerY
+            ]);
+
+
+            for (
+                let i = 0;
+                i <= count;
+                i++
+            ) {
+
+                const progress =
+                    i / count;
+
+
+                const angle =
+                    startAngle +
+                    (
+                        endAngle -
+                        startAngle
+                    ) *
+                    progress;
+
+
+                const x =
+                    centerX +
+                    Math.cos(angle) *
+                    radius;
+
+
+                const y =
+                    centerY +
+                    Math.sin(angle) *
+                    radius;
+
+
+                points.push([
+                    x,
+                    y
+                ]);
+
+            }
+
+
+            return points;
+
+        }
+
+
+        /* =========================================
+           CREATE RECTANGLE POINTS
+        ========================================= */
+
+        function createRectanglePoints(
+            x,
+            y,
+            width,
+            height,
+            count = 33
+        ) {
+
+            const points = [];
+
+
+            const perimeter =
+                2 *
+                (
+                    width +
+                    height
+                );
+
+
+            for (
+                let i = 0;
+                i < count;
+                i++
+            ) {
+
+                const distance =
+                    (
+                        i /
+                        count
+                    ) *
+                    perimeter;
+
+
+                let px;
+
+                let py;
+
+
+                if (
+                    distance <
+                    width
+                ) {
+
+                    px =
+                        x +
+                        distance;
+
+                    py =
+                        y;
+
+                }
+
+                else if (
+                    distance <
+                    width +
+                    height
+                ) {
+
+                    px =
+                        x +
+                        width;
+
+                    py =
+                        y +
+                        (
+                            distance -
+                            width
+                        );
+
+                }
+
+                else if (
+                    distance <
+                    (
+                        width * 2
+                    ) +
+                    height
+                ) {
+
+                    px =
+                        x +
+                        width -
+                        (
+                            distance -
+                            width -
+                            height
+                        );
+
+                    py =
+                        y +
+                        height;
+
+                }
+
+                else {
+
+                    px =
+                        x;
+
+                    py =
+                        y +
+                        height -
+                        (
+                            distance -
+                            (
+                                width * 2
+                            ) -
+                            height
+                        );
+
+                }
+
+
+                points.push([
+                    px,
+                    py
+                ]);
+
+            }
+
+
+            return points;
+
+        }
+
+
+        /* =========================================
+           NORMALIZE POINTS
+        ========================================= */
+
+        function normalizePoints(
+            points,
+            targetLength
+        ) {
+
+            const result = [];
+
+
+            for (
+                let i = 0;
+                i < targetLength;
+                i++
+            ) {
+
+                const index =
+                    Math.floor(
+                        (
+                            i /
+                            targetLength
+                        ) *
+                        points.length
+                    );
+
+
+                result.push(
+                    points[
+                        Math.min(
+                            index,
+                            points.length - 1
+                        )
+                    ]
+                );
+
+            }
+
+
+            return result;
+
+        }
+
+
+        /* =========================================
+           POINTS → SVG PATH
+        ========================================= */
+
+        function pointsToPath(
+            points
+        ) {
+
+            if (
+                !points.length
+            ) {
+
+                return "";
+
+            }
+
+
+            let path =
+                "M " +
+                points[0][0] +
+                " " +
+                points[0][1];
+
+
+            for (
+                let i = 1;
+                i < points.length;
+                i++
+            ) {
+
+                path +=
+                    " L " +
+                    points[i][0] +
+                    " " +
+                    points[i][1];
+
+            }
+
+
+            path +=
+                " Z";
+
+
+            return path;
+
+        }
+
+
+        /* =========================================
+           INTERPOLATE POINTS
+        ========================================= */
+
+        function interpolatePoints(
+            from,
+            to,
+            progress
+        ) {
+
+            const result = [];
+
+
+            for (
+                let i = 0;
+                i < from.length;
+                i++
+            ) {
+
+                const x =
+                    from[i][0] +
+                    (
+                        to[i][0] -
+                        from[i][0]
+                    ) *
+                    progress;
+
+
+                const y =
+                    from[i][1] +
+                    (
+                        to[i][1] -
+                        from[i][1]
+                    ) *
+                    progress;
+
+
+                result.push([
+                    x,
+                    y
+                ]);
+
+            }
+
+
+            return result;
+
+        }
+
+
+        /* =========================================
+           EASING
+        ========================================= */
+
+        function easeInOut(
+            value
+        ) {
+
+            return value < 0.5
+
+                ? 2 *
+                    value *
+                    value
+
+                : 1 -
+                    Math.pow(
+                        -2 *
+                        value +
+                        2,
+                        2
+                    ) /
+                    2;
+
+        }
+
+
+        /* =========================================
+           BUILD CHART
+        ========================================= */
+
+        const slices = [];
+
+
+        let currentAngle =
+            -Math.PI / 2;
+
+
+        employmentData.forEach(
+            function (
+                item,
+                index
+            ) {
+
+
+                const sliceAngle =
+                    (
+                        Math.PI * 2
+                    ) /
+                    employmentData.length;
+
+
+                const startAngle =
+                    currentAngle;
+
+
+                const endAngle =
+                    currentAngle +
+                    sliceAngle;
+
+
+                const piePoints =
+                    createPiePoints(
+                        startAngle,
+                        endAngle,
+                        pieRadius,
+                        32
+                    );
+
+
+                const normalizedPie =
+                    normalizePoints(
+                        piePoints,
+                        33
+                    );
+
+
+                const segmentWidth =
+                    barWidth /
+                    employmentData.length;
+
+
+                const segmentX =
+                    barX +
+                    index *
+                    segmentWidth;
+
+
+                const rectanglePoints =
+                    createRectanglePoints(
+                        segmentX,
+                        barY,
+                        segmentWidth,
+                        barHeight,
+                        33
+                    );
+
+
+                const path =
+                    document.createElementNS(
+                        "http://www.w3.org/2000/svg",
+                        "path"
+                    );
+
+
+                path.setAttribute(
+                    "class",
+                    "chart-slice"
+                );
+
+
+                path.setAttribute(
+                    "fill",
+                    item.color
+                );
+
+
+                path.setAttribute(
+                    "d",
+                    pointsToPath(
+                        normalizedPie
+                    )
+                );
+
+
+                chartSlices.appendChild(
+                    path
+                );
+
+
+                slices.push({
+
+                    element:
+                        path,
+
+                    pie:
+                        normalizedPie,
+
+                    bar:
+                        rectanglePoints
+
+                });
+
+
+                currentAngle =
+                    endAngle;
+
+            }
+        );
+
+
+        /* =========================================
+           SHADOW
+        ========================================= */
+
+        const shadow =
+            document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "ellipse"
+            );
+
+
+        shadow.setAttribute(
+            "cx",
+            centerX
+        );
+
+
+        shadow.setAttribute(
+            "cy",
+            centerY + 25
+        );
+
+
+        shadow.setAttribute(
+            "rx",
+            pieRadius
+        );
+
+
+        shadow.setAttribute(
+            "ry",
+            25
+        );
+
+
+        shadow.setAttribute(
+            "fill",
+            "#000"
+        );
+
+
+        shadow.setAttribute(
+            "filter",
+            "url(#softShadow)"
+        );
+
+
+        chartShadow.appendChild(
+            shadow
+        );
+
+
+        /* =========================================
+           STORY REFERENCES
+        ========================================= */
+
+        const storyTitle =
+            document.getElementById(
+                "storyTitle"
+            );
+
+
+        const storyText =
+            document.getElementById(
+                "storyText"
+            );
+
+
+        const legendItems =
+            document.querySelectorAll(
+                ".legend-item"
+            );
+
+
+        const scrollHint =
+            document.getElementById(
+                "scrollHint"
+            );
+
+
+        let currentStory =
+            0;
+
+
+        /* =========================================
+           UPDATE STORY
+        ========================================= */
+
+        function updateStory(
+            index
+        ) {
+
+
+            if (
+                index ===
+                currentStory
+            ) {
+
+                return;
+
+            }
+
+
+            currentStory =
+                index;
+
+
+            const item =
+                employmentData[index];
+
+
+            storyTitle.style.opacity =
+                "0";
+
+
+            storyText.style.opacity =
+                "0";
+
+
+
+
+            setTimeout(
+                function () {
+
+
+                    storyTitle.textContent =
+                        item.title;
+
+
+                    storyText.textContent =
+                        item.text;
+
+
+                    storyTitle.style.opacity =
+                        "1";
+
+
+                    storyText.style.opacity =
+                        "1";
+
+
+
+                },
+                120
+            );
+
+
+            legendItems.forEach(
+                function (
+                    legend,
+                    legendIndex
+                ) {
+
+                    legend.classList.toggle(
+                        "active",
+                        legendIndex ===
+                        index
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           UPDATE VISUALIZATION
+        ========================================= */
+
+        function updateVisualization() {
+
+
+            const section =
+                document.getElementById(
+                    "employmentScroll"
+                );
+
+
+            const rect =
+                section.getBoundingClientRect();
+
+
+            const scrollable =
+                section.offsetHeight -
+                window.innerHeight;
+
+
+            let progress =
+                -rect.top /
+                scrollable;
+
+
+            progress =
+                Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        progress
+                    )
+                );
+
+
+            /* =====================================
+               PHASE 1
+
+               PIE → STACKED BAR
+
+               0% → 45%
+            ===================================== */
+
+            const phase1End =
+                0.45;
+
+
+            let morphProgress =
+                progress /
+                phase1End;
+
+
+            morphProgress =
+                Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        morphProgress
+                    )
+                );
+
+
+            morphProgress =
+                easeInOut(
+                    morphProgress
+                );
+
+
+            /* =====================================
+               MORPH SLICES
+            ===================================== */
+
+            slices.forEach(
+                function (
+                    slice
+                ) {
+
+
+                    const points =
+                        interpolatePoints(
+                            slice.pie,
+                            slice.bar,
+                            morphProgress
+                        );
+
+
+                    slice.element.setAttribute(
+                        "d",
+                        pointsToPath(
+                            points
+                        )
+                    );
+
+
+                    /*
+                     * Keep everything bright
+                     * during the transformation.
+                     */
+
+                    slice.element.style.opacity =
+                        "1";
+
+
+                    slice.element.style.filter =
+                        "none";
+
+
+                    slice.element.style.stroke =
+                        "#101010";
+
+
+                    slice.element.style.strokeWidth =
+                        "2";
+
+                }
+            );
+
+
+            /* =====================================
+               SHADOW MORPH
+            ===================================== */
+
+            const shadowY =
+                centerY +
+                25 +
+                (
+                    (
+                        barY +
+                        barHeight / 2 -
+                        centerY
+                    ) *
+                    morphProgress
+                );
+
+
+            const shadowRX =
+                pieRadius +
+                (
+                    (
+                        barWidth / 2
+                    ) -
+                    pieRadius
+                ) *
+                morphProgress;
+
+
+            shadow.setAttribute(
+                "cy",
+                shadowY
+            );
+
+
+            shadow.setAttribute(
+                "rx",
+                shadowRX
+            );
+
+
+            /* =====================================
+               SMALL GROW DURING MORPH
+            ===================================== */
+
+            const phase1Zoom =
+                1 +
+                (
+                    morphProgress *
+                    0.08
+                );
+
+
+            svg.style.transform =
+                "scale(" +
+                phase1Zoom +
+                ")";
+
+
+            /*
+             * Lifeguarding remains selected
+             * during the entire transformation.
+             */
+
+            updateStory(0);
+
+
+            /* =====================================
+               PHASE 2
+
+               EXPLORE EMPLOYMENT
+
+               STARTS AFTER PIE IS FINISHED
+            ===================================== */
+
+            if (
+                progress >
+                phase1End
+            ) {
+
+
+                let exploreProgress =
+                    (
+                        progress -
+                        phase1End
+                    ) /
+                    (
+                        1 -
+                        phase1End
+                    );
+
+
+                exploreProgress =
+                    Math.max(
+                        0,
+                        Math.min(
+                            1,
+                            exploreProgress
+                        )
+                    );
+
+
+                /* =================================
+                   CONTROLLED GROWTH
+
+                   1.08x → 1.25x
+
+                   NEVER becomes huge.
+                ================================= */
+
+                const exploreZoom =
+                    1.08 +
+                    (
+                        exploreProgress *
+                        0.17
+                    );
+
+
+                svg.style.transform =
+                    "scale(" +
+                    exploreZoom +
+                    ")";
+
+
+                /* =================================
+                   CURRENT JOB
+                ================================= */
+
+                const jobProgress =
+                    exploreProgress *
+                    employmentData.length;
+
+
+                let jobIndex =
+                    Math.floor(
+                        jobProgress
+                    );
+
+
+                jobIndex =
+                    Math.max(
+                        0,
+                        Math.min(
+                            employmentData.length - 1,
+                            jobIndex
+                        )
+                    );
+
+
+                updateStory(
+                    jobIndex
+                );
+
+
+                /* =================================
+                   HIGHLIGHT CURRENT RECTANGLE
+                ================================= */
+
+                slices.forEach(
+                    function (
+                        slice,
+                        index
+                    ) {
+
+
+                        /*
+                         * ALL sections remain
+                         * completely visible.
+                         */
+
+                        slice.element.style.opacity =
+                            "1";
+
+
+                        /*
+                         * Remove previous
+                         * highlighting.
+                         */
+
+                        slice.element.style.filter =
+                            "none";
+
+
+                        slice.element.style.stroke =
+                            "#101010";
+
+
+                        slice.element.style.strokeWidth =
+                            "2";
+
+
+                        /*
+                         * Highlight the current
+                         * employment section.
+                         */
+
+                        if (
+                            index ===
+                            jobIndex
+                        ) {
+
+
+                            slice.element.style.filter =
+                                "drop-shadow(0 0 10px " +
+                                employmentData[index].color +
+                                ")";
+
+
+                            slice.element.style.stroke =
+                                "#ffffff";
+
+
+                            slice.element.style.strokeWidth =
+                                "5";
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* =====================================
+               SCROLL HINT
+            ===================================== */
+
+            scrollHint.style.opacity =
+                Math.max(
+                    0,
+                    1 -
+                    progress * 7
+                );
+
+        }
+
+
+        /* =========================================
+           OPTIMIZED SCROLL
+        ========================================= */
+
+        let ticking =
+            false;
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+
+                if (
+                    !ticking
+                ) {
+
+
+                    window.requestAnimationFrame(
+                        function () {
+
+
+                            updateVisualization();
+
+
+                            ticking =
+                                false;
+
+                        }
+                    );
+
+
+                    ticking =
+                        true;
+
+                }
+
+            },
+            {
+                passive:
+                    true
+            }
+        );
+
+
+        /* =========================================
+           INITIALIZE
+        ========================================= */
+
+        updateVisualization();
+
+
+    </script>
+
+</body>
+
+</html>
